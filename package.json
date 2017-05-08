@@ -6,7 +6,8 @@
     "concurrently": "^3.4.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "three": "^0.85.2"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

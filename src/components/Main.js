@@ -1,25 +1,17 @@
 import React from 'react';
 import projects from '../projects.js';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Scene from '../Scene';
 
 export default class Main extends React.Component {
+  componentDidMount(){
+    this.scene = new Scene(this.container);
+  }
+
   render() {
-
-  const projectList =  Object.keys(projects).map((key) => {
-      const project = projects[key];
-      return (
-        <li>
-          <Link to={`/projects/${key}`}>
-            <img src={project.image} alt={project.name}/>
-          </Link>
-           <h3>{project.name}</h3>
-        </li>
-      );
-    });
-
     return (
       <div className="Main">
-        <ul>{projectList}</ul>
+        <div className="scene-container" ref={(div) => this.container = div}></div>
       </div>
     );
   }
