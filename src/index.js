@@ -11,7 +11,7 @@ const Root = function() {
     <BrowserRouter>
       <div>
         <Route exact path="/" component={Main} />
-        <Route path="/project/:id" component={Project} />
+        <Route path="/projects/:slug" component={Project} />
       </div>
     </BrowserRouter>
   );
