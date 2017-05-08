@@ -16,3 +16,11 @@ export default class Main extends React.Component {
     );
   }
 }
+
+
+// map.addRayCasting(planet.globeMesh, (name) => {
+//    planet.colourCountry(name);
+//    database.searchCountry(name);
+//    document.querySelector('.results-country').innerHTML = name;
+//    navigation.displayMapResults();
+// });

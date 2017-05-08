@@ -5,11 +5,12 @@ require('three/examples/js/controls/OrbitControls.js');
 export default class Scene {
   constructor(container) {
     this.container = container;
-    this.group = new THREE.Group();
+    this.circles = [];
 
     this.init();
     this.addLights();
     this.addSpoke();
+    this.addRayCasting();
     this.loop();
 
     window.addEventListener('resize', () => this.handleResize());
@@ -71,15 +72,39 @@ export default class Scene {
         circleTwo.position.x += this.randomize(15, lineLength);
         anchor.add(circleTwo);
 
+        this.circles.push(circleTwo);
+
         anchor.rotation.z += 0.125664 * i;
 
         this.scene.add(anchor);
       }, 20 * i);
     }
+    // console.log(this.circles);
   }
 
   randomize(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  addRayCasting() {
+    this.raycaster = new THREE.Raycaster();
+    const mouseVector = new THREE.Vector2();
+
+    this.container.addEventListener('click', (e) => {
+      // console.log(e);
+      mouseVector.x = 2 * (e.offsetX / this.width()) - 1;
+      mouseVector.y = 1 - 2 * (e.offsetY / this.height());
+      this.raycaster.setFromCamera(mouseVector.clone(), this.camera);
+      // console.log(mouseVector);
+
+      const intersects = this.raycaster.intersectObjects(this.circles);
+      // console.log(intersects);
+      if (intersects.length > 0) {
+        const closest = intersects[0];
+        // this.circles(closest.object.name);
+        console.log(closest);
+      }
+    }, false);
   }
 
   handleResize() {
