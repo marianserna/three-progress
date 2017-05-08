@@ -45,15 +45,16 @@ export default class Scene {
   }
 
   addSpoke() {
-    for (let i = 0; i <= 50; i++) {
+    for (let i = 0; i < 50; i++) {
       setTimeout(() => {
         const anchor = new THREE.Object3D();
 
         const lineMaterial = new THREE.LineBasicMaterial({color: 0x8C95AA, opacity: 0.7});
         const lineGeometry = new THREE.Geometry();
+        const lineLength = this.randomize(15, 35);
         lineGeometry.vertices.push(
           new THREE.Vector3(0, 0, 0),
-        	new THREE.Vector3(30, 0, 0)
+        	new THREE.Vector3(lineLength, 0, 0)
         );
         const line = new THREE.Line(lineGeometry, lineMaterial);
         anchor.add(line);
@@ -61,13 +62,13 @@ export default class Scene {
         const circleGeometry = new THREE.CircleGeometry(0.3, 64);
         const circleMaterial = new THREE.MeshBasicMaterial({color: 0xC7AFBD, opacity: 0.8});
         const circle = new THREE.Mesh(circleGeometry, circleMaterial);
-        circle.position.x += 10;
+        circle.position.x += this.randomize(10, lineLength);
         anchor.add(circle);
 
-        const circleTwoGeometry = new THREE.CircleGeometry(0.7, 64);
+        const circleTwoGeometry = new THREE.CircleGeometry(this.randomize(0.4, 0.5), 64);
         const circleTwoMaterial = new THREE.MeshBasicMaterial({color: 0xF16B6F, opacity: 0.8});
         const circleTwo = new THREE.Mesh(circleTwoGeometry, circleTwoMaterial);
-        circleTwo.position.x += 18;
+        circleTwo.position.x += this.randomize(15, lineLength);
         anchor.add(circleTwo);
 
         anchor.rotation.z += 0.125664 * i;
@@ -75,6 +76,10 @@ export default class Scene {
         this.scene.add(anchor);
       }, 20 * i);
     }
+  }
+
+  randomize(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   handleResize() {
