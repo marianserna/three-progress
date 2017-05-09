@@ -20,6 +20,12 @@ export default class Main extends React.Component {
       this.container,
       this.showProjectImage
     );
+
+    // Preload images
+    Object.keys(projects).forEach((key) => {
+      const image = new Image();
+      image.src = projects[key].image;
+    });
   }
 
   showProjectImage = (key, x, y) => {
@@ -41,7 +47,9 @@ export default class Main extends React.Component {
           {
             circularImage.visible ?
               <div className="project-image" style={{top: circularImage.positionY, left: circularImage.positionX}}>
-                <img src={projects[circularImage.projectKey].image} alt={projects[circularImage.projectKey]}/>
+                <Link to={`/projects/${this.state.projectKey}`}>
+                  <img src={projects[circularImage.projectKey].image} alt={projects[circularImage.projectKey]}/>
+                </Link>
               </div>
             : ''
           }

@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-window.THREE = THREE;
-require('three/examples/js/controls/OrbitControls.js');
+import { TweenMax, Sine } from 'gsap';
 
 import projects from './projects.js';
 
@@ -12,6 +11,8 @@ export default class Scene {
     this.keys = Object.keys(projects);
 
     this.showProjectImage = showProjectImage;
+
+    this.closestMesh = null;
 
     this.init();
     this.addLights();
@@ -77,7 +78,7 @@ export default class Scene {
         anchor.add(circle);
 
         if (allPoints[i]) {
-          const circleTwoGeometry = new THREE.CircleGeometry(this.randomize(0.7, 0.9), 64);
+          const circleTwoGeometry = new THREE.CircleGeometry(this.randomize(0.9, 1.2), 64);
           const circleTwoMaterial = new THREE.MeshBasicMaterial({color: 0xBEF7E4, opacity: 1});
           const circleTwo = new THREE.Mesh(circleTwoGeometry, circleTwoMaterial);
           circleTwo.projectKey = allPoints[i];
@@ -117,7 +118,6 @@ export default class Scene {
       mouseVector.x = 2 * (e.offsetX / this.width()) - 1;
       mouseVector.y = 1 - 2 * (e.offsetY / this.height());
       this.raycaster.setFromCamera(mouseVector.clone(), this.camera);
-      // console.log(mouseVector);
 
       const intersects = this.raycaster.intersectObjects(this.circles);
       if (intersects.length > 0) {
@@ -126,6 +126,32 @@ export default class Scene {
         this.showProjectImage(closest.object.projectKey, e.offsetX, e.offsetY);
       }
     }, false);
+
+
+    this.container.addEventListener('mousemove', (e) => {
+      mouseVector.x = 2 * (e.offsetX / this.width()) - 1;
+      mouseVector.y = 1 - 2 * (e.offsetY / this.height());
+      this.raycaster.setFromCamera(mouseVector.clone(), this.camera);
+
+      const intersects = this.raycaster.intersectObjects(this.circles);
+      const closest = intersects[0];
+
+      if (closest && !this.closestMesh) {
+        this.closestMesh = closest.object;
+        this.expand(this.closestMesh);
+      } else if (!closest && this.closestMesh) {
+        this.unexpand(this.closestMesh);
+        this.closestMesh = null;
+      }
+    }, false);
+  }
+
+  expand(mesh) {
+    TweenMax.to(mesh.scale, 0.5, {x: 2, y: 2, z: 2, ease: Sine.easeIn});
+  }
+
+  unexpand(mesh) {
+    TweenMax.to(mesh.scale, 0.5, {x: 1, y: 1, z: 1, ease: Sine.easeIn});
   }
 
   handleResize() {
@@ -145,8 +171,3 @@ export default class Scene {
     this.renderer.render(this.scene, this.camera);
   }
 }
-
-// if (intersects.length > 0) {
-//   const closest = intersects[0];
-//   this.showPopover(closest.object.projectKey, e.offsetX, e.offsetY);
-// }

@@ -1,10 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .project-image {
   position: absolute;
 
   img {
     width: 170px;
     height: 180px;
-    border: 10px solid #E0474C;
+    border: 10px solid #E25D6E;
     border-radius: 100%;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
