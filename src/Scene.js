@@ -2,10 +2,16 @@ import * as THREE from 'three';
 window.THREE = THREE;
 require('three/examples/js/controls/OrbitControls.js');
 
+import projects from './projects.js';
+
 export default class Scene {
-  constructor(container) {
+  constructor(container, showProjectImage) {
     this.container = container;
     this.circles = [];
+
+    this.keys = Object.keys(projects);
+
+    this.showProjectImage = showProjectImage;
 
     this.init();
     this.addLights();
@@ -46,7 +52,11 @@ export default class Scene {
   }
 
   addSpoke() {
-    for (let i = 0; i < 50; i++) {
+    const points = Array(50 - (this.keys.length)).fill(false);
+    const allPoints = points.concat(this.keys);
+    this.shuffle(allPoints);
+
+    for (let i = 0; i < allPoints.length; i++) {
       setTimeout(() => {
         const anchor = new THREE.Object3D();
 
@@ -61,25 +71,37 @@ export default class Scene {
         anchor.add(line);
 
         const circleGeometry = new THREE.CircleGeometry(0.3, 64);
-        const circleMaterial = new THREE.MeshBasicMaterial({color: 0xC7AFBD, opacity: 0.8});
+        const circleMaterial = new THREE.MeshBasicMaterial({color: 0xB9A7C2, opacity: 0.8});
         const circle = new THREE.Mesh(circleGeometry, circleMaterial);
-        circle.position.x += this.randomize(10, lineLength);
+        circle.position.x += this.randomize(5, lineLength);
         anchor.add(circle);
 
-        const circleTwoGeometry = new THREE.CircleGeometry(this.randomize(0.4, 0.5), 64);
-        const circleTwoMaterial = new THREE.MeshBasicMaterial({color: 0xF16B6F, opacity: 0.8});
-        const circleTwo = new THREE.Mesh(circleTwoGeometry, circleTwoMaterial);
-        circleTwo.position.x += this.randomize(15, lineLength);
-        anchor.add(circleTwo);
+        if (allPoints[i]) {
+          const circleTwoGeometry = new THREE.CircleGeometry(this.randomize(0.7, 0.9), 64);
+          const circleTwoMaterial = new THREE.MeshBasicMaterial({color: 0xBEF7E4, opacity: 1});
+          const circleTwo = new THREE.Mesh(circleTwoGeometry, circleTwoMaterial);
+          circleTwo.projectKey = allPoints[i];
+          circleTwo.position.x += this.randomize(15, lineLength);
+          anchor.add(circleTwo);
 
-        this.circles.push(circleTwo);
+          this.circles.push(circleTwo);
+        }
 
         anchor.rotation.z += 0.125664 * i;
 
         this.scene.add(anchor);
       }, 20 * i);
     }
-    // console.log(this.circles);
+  }
+
+  shuffle(a) {
+    let j, x, i;
+    for (i = a.length; i; i--) {
+      j = Math.floor(Math.random() * i);
+      x = a[i - 1];
+      a[i - 1] = a[j];
+      a[j] = x;
+    };
   }
 
   randomize(min, max) {
@@ -91,18 +113,17 @@ export default class Scene {
     const mouseVector = new THREE.Vector2();
 
     this.container.addEventListener('click', (e) => {
-      // console.log(e);
+      console.log(e);
       mouseVector.x = 2 * (e.offsetX / this.width()) - 1;
       mouseVector.y = 1 - 2 * (e.offsetY / this.height());
       this.raycaster.setFromCamera(mouseVector.clone(), this.camera);
       // console.log(mouseVector);
 
       const intersects = this.raycaster.intersectObjects(this.circles);
-      // console.log(intersects);
       if (intersects.length > 0) {
         const closest = intersects[0];
-        // this.circles(closest.object.name);
         console.log(closest);
+        this.showProjectImage(closest.object.projectKey, e.offsetX, e.offsetY);
       }
     }, false);
   }
@@ -124,3 +145,8 @@ export default class Scene {
     this.renderer.render(this.scene, this.camera);
   }
 }
+
+// if (intersects.length > 0) {
+//   const closest = intersects[0];
+//   this.showPopover(closest.object.projectKey, e.offsetX, e.offsetY);
+// }
