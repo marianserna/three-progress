@@ -2,6 +2,7 @@ import React from 'react';
 import projects from '../projects.js';
 import { Link } from 'react-router-dom';
 import Scene from '../Scene';
+import { TweenMax } from 'gsap';
 
 export default class Main extends React.Component {
   constructor() {
@@ -18,13 +19,21 @@ export default class Main extends React.Component {
   componentDidMount(){
     this.scene = new Scene(
       this.container,
-      this.showProjectImage
+      this.showProjectImage,
+      this.hideProjectImage
     );
 
     // Preload images
     Object.keys(projects).forEach((key) => {
       const image = new Image();
       image.src = projects[key].image;
+    });
+
+    document.addEventListener('keydown', (e) => {
+      console.log(e.code);
+      if (e.code === 'Escape') {
+        this.hideProjectImage();
+      }
     });
   }
 
@@ -34,7 +43,15 @@ export default class Main extends React.Component {
       positionX: x - 75,
       positionY: y - 75,
       projectKey: key
-    })
+    });
+
+    TweenMax.fromTo('.project-image img', 0.5, {width: 0}, {width:180});
+  }
+
+  hideProjectImage = () => {
+    this.setState({
+      visible: false
+    });
   }
 
 

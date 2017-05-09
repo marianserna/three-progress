@@ -4,13 +4,14 @@ import { TweenMax, Sine } from 'gsap';
 import projects from './projects.js';
 
 export default class Scene {
-  constructor(container, showProjectImage) {
+  constructor(container, showProjectImage, hideProjectImage) {
     this.container = container;
     this.circles = [];
 
     this.keys = Object.keys(projects);
 
     this.showProjectImage = showProjectImage;
+    this.hideProjectImage = hideProjectImage;
 
     this.closestMesh = null;
 
@@ -124,6 +125,8 @@ export default class Scene {
         const closest = intersects[0];
         console.log(closest);
         this.showProjectImage(closest.object.projectKey, e.offsetX, e.offsetY);
+      } else {
+        this.hideProjectImage();
       }
     }, false);
 

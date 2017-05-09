@@ -4,12 +4,19 @@
   padding: 0; }
 
 .project-image {
-  position: absolute; }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  padding: 20px; }
   .project-image img {
-    width: 170px;
-    height: 180px;
-    border: 10px solid #E25D6E;
+    max-width: 100%;
+    max-height: 100%;
+    border: 10px solid #CE93D8;
     border-radius: 100%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
 
 /*# sourceMappingURL=styles.css.map */
