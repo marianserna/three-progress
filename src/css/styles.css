@@ -34,7 +34,7 @@ p span {
 
 a {
   text-decoration: none;
-  color: #DCDCDC;
+  color: #8C95AA;
   transition: color 1s ease; }
   a:hover {
     cursor: pointer;
@@ -56,16 +56,33 @@ header {
   .header-content h1, .header-content p {
     margin-left: 50px;
     margin-right: 50px; }
+  @media (max-width: 1094px) {
+    .header-content h1 {
+      display: none; } }
+  @media (max-width: 690px) {
+    .header-content p a {
+      display: none; } }
 
 .header-line {
-  width: 35%; }
+  width: 55%; }
   .header-line hr {
     border: 0;
     border-top: 1px dotted #DCDCDC;
     display: block; }
 
+.legend p {
+  padding-top: 20px;
+  padding-left: 50px;
+  font-size: 0.8rem;
+  color: #8C95AA; }
+  @media (max-width: 690px) {
+    .legend p {
+      display: none; } }
+
 .scene-container {
-  position: relative; }
+  position: relative;
+  width: 100vw;
+  overflow: hidden; }
 
 footer {
   height: 3em;
@@ -96,7 +113,8 @@ footer {
     bottom: 5%;
     right: 3%; }
   .project .video-container {
-    width: 50%; }
+    width: 50%;
+    overflow: hidden; }
     .project .video-container video {
       max-width: 100%; }
     @media (max-width: 960px) {

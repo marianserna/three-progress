@@ -1,8 +1,40 @@
 import React from 'react';
 import projects from '../projects.js'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { TweenMax, TimelineLite } from 'gsap';
 
 export default class Project extends React.Component {
+
+  componentDidMount() {
+    this.animateProject();
+    this.nextOnRight();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.animateProject();
+  }
+
+  animateProject = () => {
+    const tl = new TimelineLite();
+    tl.fromTo('.video-container video', 1, {x: -1000, opacity: 0}, {x: 0, opacity: 1}).
+      fromTo('.content-container', 1.5, {opacity: 0}, {opacity: 1}).
+      fromTo('.home-link', 0, {opacity: 0}, {opacity: 1}).
+      fromTo('.next-link', 0, {opacity: 0}, {opacity: 1})
+    tl.play();
+  }
+
+  nextOnRight = () => {
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowRight') {
+        const slug = this.props.match.params.slug;
+        const project = projects[slug];
+        window.location.replace(this.nextPath(project.number));
+        // w React Router (conflicts w animation):
+        // this.props.history.push(this.nextPath(project.number));
+      }
+    });
+  }
+
   nextPath = (number) => {
     let key = this.projectKey(number + 1);
     if (key === undefined) {
@@ -21,7 +53,6 @@ export default class Project extends React.Component {
   }
 
   render() {
-
     const slug = this.props.match.params.slug;
     const project = projects[slug];
 

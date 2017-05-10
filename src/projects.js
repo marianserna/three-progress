@@ -1,7 +1,7 @@
 module.exports = {
   deconstruct: {
     number: 8,
-    name: 'DECONSTRUCT',
+    name: 'DECONSTRUCT HOME SCENE',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/deconstruct.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/deconstruct.mp4',
     description: 'Using shaders, tessellate and explode modifiers to build a scene for my final portfolio presentation (April/2017).',
@@ -9,7 +9,7 @@ module.exports = {
   },
   foreigns: {
     number: 6,
-    name: 'FOREIGN BORN',
+    name: 'FOREIGN BORN MAIN SCENE',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/foreign.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/foreigns.mp4',
     description: 'Using raycasting to show labels on a map based on mouse position.',
@@ -25,26 +25,26 @@ module.exports = {
   },
   infront: {
     number: 3,
-    name: 'IN FRONT',
+    name: 'IN FRONT LANDING',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/infront.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/inFront.mp4',
-    description: 'Created a particles system for a react on rails prototype of an application testing conversational interfaces',
+    description: 'Created a particles system for a react on rails prototype of an application testing conversational interfaces for visually impaired people.',
     fullProject: 'https://infront-app.herokuapp.com/'
   },
   llama: {
     number: 1,
-    name: 'LLAMA TRAINING CAMPUS',
+    name: 'LLAMA TRAINING CAMPUS MAIN SCENE',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/llama.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/llama.mp4',
-    description: 'Using three.js, I built a geometric llama with which the user can interact by following the instructions included in the interface.',
+    description: 'Using three.js for the very first time, I built a geometric llama which the user can interact with by following the instructions included in the interface.',
     fullProject: 'https://llamatrainingcampus.herokuapp.com/'
   },
   music: {
     number: 4,
-    name: 'MUSIC MAP',
+    name: 'MUSIC MAP MAIN FEATURE',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/map.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/music.mp4',
-    description: "This 3D map is the main feature of my music map application. As users add songs to their playlists, these are also added to their respective countries (based on user's geolocation) so that other users, when searching music by country, can add these songs to their own playlists.",
+    description: "Music Map allows users to create their own playlists using the SoundCloud API. As users add songs to their playlists, these are also added to their respective countries (based on user's geolocation) so that other users -when searching music by country- can add these songs to their own playlists.",
     fullProject: 'https://musica-map.herokuapp.com/index.html'
   },
   portfolio: {
@@ -60,7 +60,7 @@ module.exports = {
     name: 'WIREFRAME ON 3D OBJECT',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/prototype.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/prototype.mp4',
-    description: 'Testing interactions with a basic wireframe on a 3D watch.',
+    description: "Using a basic wireframe on a 3D watch to test interactions for a prototype of an application for people with Alzheimer's.",
     fullProject: 'http://show.marianserna.com/care4/'
   }
 }

@@ -44,7 +44,7 @@ p span {
 
 a {
   text-decoration: none;
-  color: #DCDCDC;
+  color: #8C95AA;
   transition: color 1s ease;
 
   &:hover {
@@ -74,10 +74,22 @@ header {
     margin-left: 50px;
     margin-right: 50px;
   }
+
+  @media(max-width: 1094px) {
+    h1 {
+      display: none;
+    }
+  }
+
+  @media(max-width: 690px) {
+    p a {
+      display: none;
+    }
+  }
 }
 
 .header-line {
-  width: 35%;
+  width: 55%;
 
   hr {
     border: 0;
@@ -86,8 +98,21 @@ header {
   }
 }
 
+.legend p {
+  padding-top: 20px;
+  padding-left: 50px;
+  font-size: 0.8rem;
+  color: #8C95AA;
+
+  @media(max-width: 690px) {
+      display: none;
+  }
+}
+
 .scene-container {
   position: relative;
+  width: 100vw;
+  overflow: hidden;
 }
 
 
@@ -134,9 +159,11 @@ footer {
 
   .video-container {
     width: 50%;
+    overflow: hidden;
 
     video {
       max-width: 100%;
+      // box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
 
     @media(max-width: 960px) {
@@ -157,6 +184,7 @@ footer {
 
     .description {
       color: #00303F;
+      // font-family: 'Lato', sans-serif;
       font-size: 1.1rem;
       line-height: 2rem;
       padding-bottom: 50px;

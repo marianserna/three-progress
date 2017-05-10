@@ -17,7 +17,9 @@ export default class Scene {
 
     this.init();
     this.addLights();
-    this.addSpoke();
+
+    setTimeout(() => {this.addSpokes();}, 1700);
+
     this.addRayCasting();
 
     TweenMax.fromTo(this.scene.rotation, 1, {z: 0}, {z: 2});
@@ -56,8 +58,16 @@ export default class Scene {
     this.scene.add(light);
   }
 
-  addSpoke() {
-    const points = Array(50 - (this.keys.length)).fill(false);
+  addSpokes() {
+    let numSpokes = 50;
+    let maxLineLength = 25;
+
+    if (this.width() < 1024) {
+      numSpokes = 35;
+      maxLineLength = 15;
+    }
+
+    const points = Array(numSpokes - (this.keys.length)).fill(false);
     const allPoints = points.concat(this.keys);
     this.shuffle(allPoints);
 
@@ -67,7 +77,7 @@ export default class Scene {
 
         const lineMaterial = new THREE.LineBasicMaterial({color: 0x8C95AA, opacity: 0.7});
         const lineGeometry = new THREE.Geometry();
-        const lineLength = this.randomize(10, 25);
+        const lineLength = this.randomize(10, maxLineLength);
         lineGeometry.vertices.push(
           new THREE.Vector3(0, 0, 0),
         	new THREE.Vector3(lineLength, 0, 0)
@@ -94,7 +104,7 @@ export default class Scene {
           this.circles.push(circleTwo);
         }
 
-        anchor.rotation.z += 0.125664 * i;
+        anchor.rotation.z += ((Math.PI * 2) / numSpokes) * i;
         TweenMax.fromTo(anchor.scale, 0.3, {x: 0.1, y: 0.1, z: 0.1}, {x: 1, y: 1, z: 1, ease: Sine.easeIn});
         this.scene.add(anchor);
       }, 20 * i);

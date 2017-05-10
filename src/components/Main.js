@@ -18,19 +18,26 @@ export default class Main extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
+
     this.scene = new Scene(
       this.container,
       this.showProjectImage,
       this.hideProjectImage
     );
 
-    // Preload images
+    this.preloadImages();
+    this.hideOnEscape();
+  }
+
+  preloadImages = () => {
     Object.keys(projects).forEach((key) => {
       const image = new Image();
       image.src = projects[key].image;
     });
+  }
 
+  hideOnEscape = () => {
     document.addEventListener('keydown', (e) => {
       if (e.code === 'Escape') {
         this.hideProjectImage();
