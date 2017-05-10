@@ -17,8 +17,65 @@
   img {
     max-width: 100%;
     max-height: 100%;
-    border: 10px solid #CE93D8;
+    border: 10px solid #FF9E80;
     border-radius: 100%;
     box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
+}
+
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.5rem;
+}
+
+p, h2, h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+}
+
+
+h3 {
+  font-size: 1.3rem;
+}
+
+header {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.header-content {
+  width: 60%;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  h1, h3, p {
+    margin-left: 50px;
+    margin-right: 50px;
+    color: #04384A;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.header-line {
+  width: 40%;
+
+  hr {
+    border: 0;
+    border-top: 1px solid #8C95AA;
+    display: block;
+  }
+}
+
+.scene-container {
+  position: relative;
+  margin-top: 30px;
 }

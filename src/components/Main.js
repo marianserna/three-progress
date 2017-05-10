@@ -1,5 +1,6 @@
 import React from 'react';
 import projects from '../projects.js';
+import Header from './Header';
 import { Link } from 'react-router-dom';
 import Scene from '../Scene';
 import { TweenMax } from 'gsap';
@@ -30,7 +31,6 @@ export default class Main extends React.Component {
     });
 
     document.addEventListener('keydown', (e) => {
-      console.log(e.code);
       if (e.code === 'Escape') {
         this.hideProjectImage();
       }
@@ -60,7 +60,10 @@ export default class Main extends React.Component {
 
     return (
       <div className="Main">
-        <div className="scene-container" ref={(div) => this.container = div}></div>
+        <Header />
+
+        <div className="scene-container">
+          <div ref={(div) => this.container = div}></div>
           {
             circularImage.visible ?
               <div className="project-image" style={{top: circularImage.positionY, left: circularImage.positionX}}>
@@ -70,6 +73,7 @@ export default class Main extends React.Component {
               </div>
             : ''
           }
+        </div>
       </div>
     );
   }
