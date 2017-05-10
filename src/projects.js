@@ -41,10 +41,10 @@ module.exports = {
   },
   music: {
     number: 4,
-    name: 'MUSIC MAP MAIN FEATURE',
+    name: 'MUSIC MAP MAIN',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/map.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/music.mp4',
-    description: "Music Map allows users to create their own playlists using the SoundCloud API. As users add songs to their playlists, these are also added to their respective countries (based on user's geolocation) so that other users -when searching music by country- can add these songs to their own playlists.",
+    description: "Music Map allows users to create their own playlists using the SoundCloud API. As users add songs to their playlists, these are also added to their respective countries making them available to other users.",
     fullProject: 'https://musica-map.herokuapp.com/index.html'
   },
   portfolio: {
