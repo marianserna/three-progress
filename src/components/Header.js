@@ -7,8 +7,12 @@ export default class Header extends React.Component {
       <header>
         <div className="header-content">
           <h1>TRACKING <br/> PROGRESS</h1>
-          <p>Interactive Projects <br/> with Three.js</p>
-          <h3>Marian <br/> Serna</h3>
+          <p>INTERACTIVE PROJECTS <br/> WITH THREE.JS</p>
+          <p>
+            <a href="https://www.marianserna.com/" target="_blank">
+              MARIAN <br/>SERNA
+            </a>
+          </p>
         </div>
         <div className="header-line">
           <hr/>

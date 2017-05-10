@@ -20,46 +20,49 @@
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
 
 h1 {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  color: #00303F;
   font-size: 1.5rem; }
 
-p, h2, h3 {
+p, h2 {
+  color: #00303F;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1rem; }
 
-h3 {
-  font-size: 1.3rem; }
+a {
+  text-decoration: none;
+  color: #DCDCDC;
+  transition: color 1s ease; }
+  a:hover {
+    cursor: pointer;
+    color: #9068BE; }
 
 header {
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   padding-top: 30px; }
 
 .header-content {
-  width: 60%;
   padding-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: flex-end; }
-  .header-content h1, .header-content h3, .header-content p {
+  .header-content h1, .header-content p {
     margin-left: 50px;
-    margin-right: 50px;
-    color: #04384A; }
-  .header-content p {
-    text-align: center; }
+    margin-right: 50px; }
 
 .header-line {
-  width: 40%; }
+  width: 35%; }
   .header-line hr {
     border: 0;
-    border-top: 1px solid #8C95AA;
+    border-top: 1px dotted #DCDCDC;
     display: block; }
 
 .scene-container {
-  position: relative;
-  margin-top: 30px; }
+  position: relative; }
 
 /*# sourceMappingURL=styles.css.map */
