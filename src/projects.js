@@ -33,7 +33,7 @@ module.exports = {
   },
   llama: {
     number: 1,
-    name: 'LLAMA TRAINING CAMPUS MAIN SCENE',
+    name: 'LLAMA TRAINING MAIN SCENE',
     image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/llama.png',
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/llama.mp4',
     description: 'Using three.js for the very first time, I built a geometric llama which the user can interact with by following the instructions included in the interface.',
