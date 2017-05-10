@@ -52,7 +52,7 @@ export default class Scene {
   }
 
   addLights() {
-    const light = new THREE.AmbientLight(0xB2EBF2, 0.7);
+    const light = new THREE.AmbientLight(0xFFFFFF, 0.7);
     this.scene.add(light);
   }
 
@@ -76,7 +76,7 @@ export default class Scene {
         anchor.add(line);
 
         const circleGeometry = new THREE.CircleGeometry(0.3, 64);
-        const circleMaterial = new THREE.MeshBasicMaterial({color: 0xB9A7C2, opacity: 0.8});
+        const circleMaterial = new THREE.MeshBasicMaterial({color: 0xB9A7C2});
         const circle = new THREE.Mesh(circleGeometry, circleMaterial);
         circle.position.x += this.randomize(5, lineLength);
         TweenMax.fromTo(circle.scale, 0.3, {x: 0.1, y: 0.1, z: 0.1}, {x: 1, y: 1, z: 1, delay:0.5, ease: Sine.easeIn});
@@ -84,7 +84,7 @@ export default class Scene {
 
         if (allPoints[i]) {
           const circleTwoGeometry = new THREE.CircleGeometry(this.randomize(0.9, 1.2), 64);
-          const circleTwoMaterial = new THREE.MeshBasicMaterial({color: 0xBEF7E4, opacity: 1});
+          const circleTwoMaterial = new THREE.MeshBasicMaterial({color: 0xCEFFCE});
           const circleTwo = new THREE.Mesh(circleTwoGeometry, circleTwoMaterial);
           circleTwo.projectKey = allPoints[i];
           circleTwo.position.x += this.randomize(10, lineLength);

@@ -6,8 +6,8 @@ export default class Header extends React.Component {
     return (
       <header>
         <div className="header-content">
-          <h1>TRACKING <br/> PROGRESS</h1>
-          <p>INTERACTIVE PROJECTS <br/> WITH THREE.JS</p>
+          <h1>TRACKING <br/>PROGRESS</h1>
+          <p><span>CREATIVE DEVELOPMENT:</span><br/> INTERACTIVE PROJECTS <br/> WITH THREE.JS</p>
           <p>
             <a href="https://www.marianserna.com/" target="_blank">
               MARIAN <br/>SERNA

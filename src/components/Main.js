@@ -1,6 +1,7 @@
 import React from 'react';
 import projects from '../projects.js';
 import Header from './Header';
+import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import Scene from '../Scene';
 import { TweenMax } from 'gsap';
@@ -60,6 +61,7 @@ export default class Main extends React.Component {
 
     return (
       <div className="Main">
+
         <Header />
 
         <div className="scene-container">
@@ -74,6 +76,8 @@ export default class Main extends React.Component {
             : ''
           }
         </div>
+
+        <Footer />
       </div>
     );
   }

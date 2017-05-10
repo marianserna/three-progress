@@ -2,7 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
 }
+
+// ------------ MAIN
 
 .project-image {
   display: flex;
@@ -17,23 +20,26 @@
   img {
     max-width: 100%;
     max-height: 100%;
-    border: 10px solid #FF9E80;
+    border: 10px solid #B9A7C2;
     border-radius: 100%;
     box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
 }
 
 h1 {
-  font-family: 'Roboto Condensed', sans-serif;
+
   font-weight: bold;
   color: #00303F;
   font-size: 1.5rem;
 }
 
-p, h2 {
+p {
   color: #00303F;
-  font-family: 'Roboto Condensed', sans-serif;
   font-size: 1rem;
+}
+
+p span {
+  font-weight: bold;
 }
 
 a {
@@ -46,6 +52,8 @@ a {
     color: #9068BE;
   }
 }
+
+// ---------- HEADER
 
 header {
   width: 100vw;
@@ -81,3 +89,119 @@ header {
 .scene-container {
   position: relative;
 }
+
+
+// ----------- FOOTER
+
+footer {
+  height: 3em;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(140,149,170, 0.6);
+  color: #fff;
+
+  span {
+    padding-left: 10px;
+    font-size: 1.3rem;
+  }
+}
+
+
+// ------------ PROJECT
+
+.project {
+  width: 80vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+
+  .home-link {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+  }
+
+  .next-link {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+  }
+
+  .video-container {
+    width: 50%;
+
+    video {
+      max-width: 100%;
+    }
+
+    @media(max-width: 960px) {
+      display: none;
+    }
+  }
+
+  .content-container {
+    width: calc(50% - 100px);
+    padding-left: 100px;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #DCDCDC;
+      padding-bottom: 50px;
+    }
+
+    .description {
+      color: #00303F;
+      font-size: 1.1rem;
+      line-height: 2rem;
+      padding-bottom: 50px;
+      text-align: justify;
+    }
+
+    .redirect {
+      display: block;
+      position: absolute;
+      right: calc(10vw + 50px);
+      color: #9068BE;
+      border: 1px solid #B9A7C2;
+      padding: 15px;
+      margin-bottom: 50px;
+      box-shadow: none;
+      transition: box-shadow 1s ease;
+
+      &:hover {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      }
+    }
+
+    @media(max-width: 960px) {
+      width: 100%;
+      padding-left: 0;
+
+      .redirect {
+        right: 10vw;
+      }
+    }
+  }
+}
+
+
+
+
+
+// <div className="project">
+//   <div className="video-container">
+//     <video src={project.video} autoPlay loop></video>
+//   </div>
+//
+//   <div className="content-container">
+//     <h2>{project.name}</h2>
+//     <div className="description">{project.description}</div>
+//     <a href={project.fullProject} target="_blank">Full Project</a>
+//   </div>
+// </div>
