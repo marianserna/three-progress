@@ -62,5 +62,13 @@ module.exports = {
     video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/prototype.mp4',
     description: "Using a basic wireframe on a 3D watch to test interactions for a prototype of an application for people with Alzheimer's.",
     fullProject: 'http://show.marianserna.com/care4/'
+  },
+  aFrame: {
+    number: 9,
+    name: 'AUDIO FREQUENCIES VISUALIZATION',
+    image: 'https://s3.ca-central-1.amazonaws.com/three-showcase/audioVis.png',
+    video: 'https://s3.ca-central-1.amazonaws.com/three-showcase/audioVis.mp4',
+    description: "Using SoundCloud and the AudioContext APIs to play with music frequencies in A-Frame",
+    fullProject: 'https://audio-visuals.herokuapp.com/index.html'
   }
 }
